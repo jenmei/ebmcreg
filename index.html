@@ -22,10 +22,34 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <p>Hello world! This is HTML5 Boilerplate.</p>
+        <h1>EBMC Event Registration - Step One</h1>
+        <p>The EBMC Leadership Sangha has set a goal of balancing the demographics of the EBMC practice space and maximizing the percentage of People of Color (POC) in attendance at each of the daylongs, class series, and workshops for which EBMC requires advance registration (i.e.,  not for the weekly sitting groups), except events reserved for certain specific communities. We seek a minimum of 40% POC attendance at events open to all. </p>
 
-        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>
+        <form accept-charset="UTF-8" action="/users" autocomplete="off" class="form-signup-home js-form-signup-home" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="NOYKymx1GbRHmMtJP/2QC7nD2gSIW58sn9bKW7R9iLI="></div>        <dl class="form">
+            <dd>
+                <input type="text" name="firstname" class="textfield" placeholder="First Name" autofocus="&quot;autofocus&quot;">
+            </dd>
+        </dl>
+            <dl class="form">
+                <dd>
+                    <input type="text" name="lastname" class="textfield" placeholder="Last Name" >
+                </dd>
+            </dl>
+            <dl class="form">
+                <dd>
+                    <label>Do you identify as a Person of Color?</label><br>
+                    <input type="radio" name="pocstatus" value="Yes">Yes<br>
+                    <input type="radio" name="pocstatus" value="No">No
+                </dd>
+            </dl>
+        </form>
+        <a class="poc" href="" style="display:none">Click here to finish registering on Eventbrite</a>
+        <a class="gen" href="" style="display:none">Click here to finish registering on Eventbrite</a>
+
+        <script src="js/vendor/jquery-1.9.1.min.js"></script>
+        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
+        <script src="js/vendor/purl.js"></script>
+        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>-->
         <script src="js/plugins.js"></script>
         <script src="js/main.js"></script>
 
@@ -35,6 +59,30 @@
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
+
+            $(document).ready(function() {
+                var eventPrefix=$.url().param('event');
+                $("a.poc").attr("href","https://" + eventPrefix + "-poc.eventbrite.com")
+                $("a.gen").attr("href","https://" + eventPrefix + "-gen.eventbrite.com")
+                $("form").change(function(){
+                    var poc=$('input[name=pocstatus]:radio:checked').val();
+                    var firstName=$("input[name=firstname]").val();
+                    var lastName=$("input[name=lastname]").val();
+                    if (poc.length > 0 && firstName.length >0 && lastName.length >0){
+
+                        if (poc === "Yes"){
+                                  $("a.poc").show();
+                            $("a.gen").hide();
+                        }   else {
+                            $("a.poc").hide();
+                            $("a.gen").show();
+
+                        }
+
+
+                    }
+                })
+            })
         </script>
     </body>
 </html>
