@@ -15,6 +15,14 @@
         <link rel="stylesheet" href="css/normalize.css">
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+        <style type='text/css'>
+            h1, p {
+                margin-left: 40px;
+            }
+            .required {
+                color: red;
+            }
+        </style>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -25,24 +33,23 @@
         <h1>EBMC Event Registration - Step One</h1>
         <p>The EBMC Leadership Sangha has set a goal of balancing the demographics of the EBMC practice space and maximizing the percentage of People of Color (POC) in attendance at each of the daylongs, class series, and workshops for which EBMC requires advance registration (i.e.,  not for the weekly sitting groups), except events reserved for certain specific communities. We seek a minimum of 40% POC attendance at events open to all. </p>
 
-        <form accept-charset="UTF-8" action="/users" autocomplete="off" class="form-signup-home js-form-signup-home" method="post"><div style="margin:0;padding:0;display:inline"><input name="authenticity_token" type="hidden" value="NOYKymx1GbRHmMtJP/2QC7nD2gSIW58sn9bKW7R9iLI="></div>        <dl class="form">
-            <dd>
-                <input type="text" name="firstname" class="textfield" placeholder="First Name" autofocus="&quot;autofocus&quot;">
-            </dd>
-        </dl>
-            <dl class="form">
-                <dd>
-                    <input type="text" name="lastname" class="textfield" placeholder="Last Name" >
-                </dd>
-            </dl>
-            <dl class="form">
-                <dd>
-                    <label>Do you identify as a Person of Color?</label><br>
-                    <input type="radio" name="pocstatus" value="Yes">Yes<br>
-                    <input type="radio" name="pocstatus" value="No">No
-                </dd>
-            </dl>
+        <form>
+            <p>
+                <input type="text" name="firstname" class="textfield" placeholder="First Name" autofocus="&quot;autofocus&quot;"><span class="required">*</span>
+            </p>
+            <p>
+                <input type="text" name="lastname" class="textfield" placeholder="Last Name" ><span class="required">*</span>
+            </p>
+            <p>
+                <label>Do you identify as a Person of Color?</label><span class="required">*</span><br>
+                <input type="radio" name="pocstatus" value="Yes">Yes<br>
+                <input type="radio" name="pocstatus" value="No">No
+            </p>
         </form>
+
+        <p class='required'>
+            *Required.
+        </p>
         <a class="poc" href="" style="display:none">Click here to finish registering on Eventbrite</a>
         <a class="gen" href="" style="display:none">Click here to finish registering on Eventbrite</a>
 
