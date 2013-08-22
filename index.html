@@ -16,8 +16,9 @@
         <link rel="stylesheet" href="css/main.css">
         <script src="js/vendor/modernizr-2.6.2.min.js"></script>
         <style type='text/css'>
-            h1, p {
+            .ebmcreg {
                 margin-left: 40px;
+                margin-right: 40px;
             }
             .required {
                 color: red;
@@ -30,28 +31,31 @@
         <![endif]-->
 
         <!-- Add your site or application content here -->
-        <h1>EBMC Event Registration - Step One</h1>
-        <p>The EBMC Leadership Sangha has set a goal of balancing the demographics of the EBMC practice space and maximizing the percentage of People of Color (POC) in attendance at each of the daylongs, class series, and workshops for which EBMC requires advance registration (i.e.,  not for the weekly sitting groups), except events reserved for certain specific communities. We seek a minimum of 40% POC attendance at events open to all. </p>
+        <div class="ebmcreg">
+          <h1>EBMC Event Registration - Step One</h1>
+          <p>The EBMC Leadership Sangha has set a goal of balancing the demographics of the EBMC practice space and maximizing the percentage of People of Color (POC) in attendance at each of the daylongs, class series, and workshops for which EBMC requires advance registration (i.e.,  not for the weekly sitting groups), except events reserved for certain specific communities. We seek a minimum of 40% POC attendance at events open to all. </p>
 
-        <form>
+          <form>
             <p>
-                <input type="text" name="firstname" class="textfield" placeholder="First Name" autofocus="&quot;autofocus&quot;"><span class="required">*</span>
+              <input type="text" name="firstname" class="textfield" placeholder="First Name" autofocus="&quot;autofocus&quot;"><span class="required">*</span>
             </p>
             <p>
-                <input type="text" name="lastname" class="textfield" placeholder="Last Name" ><span class="required">*</span>
+              <input type="text" name="lastname" class="textfield" placeholder="Last Name" ><span class="required">*</span>
             </p>
             <p>
-                <label>Do you identify as a Person of Color?</label><span class="required">*</span><br>
-                <input type="radio" name="pocstatus" value="Yes">Yes<br>
-                <input type="radio" name="pocstatus" value="No">No
+              <label>Do you identify as a Person of Color?</label><span class="required">*</span><br>
+              <input type="radio" name="pocstatus" value="Yes">Yes<br>
+              <input type="radio" name="pocstatus" value="No">No
             </p>
-        </form>
+          </form>
 
-        <p class='required'>
+          <p class='required'>
             *Required.
-        </p>
-        <a class="poc" href="" style="display:none">Click here to finish registering on Eventbrite</a>
-        <a class="gen" href="" style="display:none">Click here to finish registering on Eventbrite</a>
+          </p>
+          <a class="poc" href="" style="display:none">Click here to finish registering on Eventbrite</a>
+          <a class="gen" href="" style="display:none">Click here to finish registering on Eventbrite</a>
+        </div>
+
 
         <script src="js/vendor/jquery-1.9.1.min.js"></script>
         <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
@@ -62,7 +66,7 @@
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         <script>
-            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
+//            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
             (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
