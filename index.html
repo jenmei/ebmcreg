@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Registration</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -71,29 +71,56 @@
             g.src='//www.google-analytics.com/ga.js';
             s.parentNode.insertBefore(g,s)}(document,'script'));
 
-            $(document).ready(function() {
-                var eventPrefix=$.url().param('event');
-                $("a.poc").attr("href","https://" + eventPrefix + "-poc.eventbrite.com")
-                $("a.gen").attr("href","https://" + eventPrefix + "-gen.eventbrite.com")
-                $("form").change(function(){
-                    var poc=$('input[name=pocstatus]:radio:checked').val();
-                    var firstName=$("input[name=firstname]").val();
-                    var lastName=$("input[name=lastname]").val();
-                    if (poc.length > 0 && firstName.length >0 && lastName.length >0){
+          </script>
+  <script>
 
-                        if (poc === "Yes"){
-                                  $("a.poc").show();
-                            $("a.gen").hide();
-                        }   else {
-                            $("a.poc").hide();
-                            $("a.gen").show();
+      jQuery(document).ready(function() {
 
-                        }
+        function redirectToEventRegistration (eventPrefix) {
+          console.log('redirecting')
+
+          var $ = jQuery(".ebmcreg").find;
+          $("a.poc").attr("href","https://" + eventPrefix + "-poc.eventbrite.com")
+          $("a.gen").attr("href","https://" + eventPrefix + "-gen.eventbrite.com")
+          $("form").change(function(){
+            console.log('changed');
+              var poc=$('input[name=pocstatus]:radio:checked').val();
+              var firstName=$("input[name=firstname]").val();
+              var lastName=$("input[name=lastname]").val();
+              if (poc.length > 0 && firstName.length >0 && lastName.length >0){
+
+                  if (poc === "Yes"){
+                    console.log('poc');
+                      $("a.poc").show();
+                      $("a.gen").hide();
+                  }   else {
+                    console.log('not poc');
+                      $("a.poc").hide();
+                      $("a.gen").show();
+
+                  }
 
 
-                    }
-                })
-            })
-        </script>
+              }
+          })
+        };
+
+        if (jQuery(".ebmcreg").length == 0) {
+          console.log('no ebmcreg; exiting')
+          return;
+        }
+        console.log('found ebmcreg')
+        try {
+          console.log('hi');
+          var match = window.location.search.match(/event=(.*)/);
+          var eventPrefix = window.location.search.match(/event=(.*)/)[1];
+          console.log(eventPrefix);
+          redirectToEventRegistration(eventPrefix);
+        } catch (e) {
+          console.log(e);
+        }
+      });
+
+</script>
     </body>
 </html>
