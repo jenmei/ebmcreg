@@ -1,99 +1,73 @@
-<!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width">
+<div class="ebmcreg"><h1>EBMC Event Registration - Step One</h1>
+  <p>The EBMC Leadership Sangha has set a goal of balancing the demographics of the EBMC practice space and maximizing
+    the percentage of People of Color (POC) in attendance at each of the daylongs, class series, and workshops for which
+    EBMC requires advance registration (i.e., not for the weekly sitting groups), except events reserved for certain
+    specific communities. We seek a minimum of 40% POC attendance at events open to all.</p>
+  <form>
+    <p>
+      <input class="textfield" name="firstname" type="text" autofocus="&quot;autofocus&quot;"
+             placeholder="First Name*"/>
+    </p>
+    <p>
+      <input class="textfield" name="lastname" type="text" placeholder="Last Name*"/>
+    </p>
+    <p>
+      <label>
+        Do you identify as a Person of Color or as Multiracial?
+      </label>
+      <span class="required">*</span>
+      <br/>
+      <input name="pocstatus" type="radio" value="Yes"/>
+      Yes
+      <br/>
+      <input name="pocstatus" type="radio" value="No"/>
+      No
+    </p>
+  </form>
+  <p class="required">*Required.</p>
+  <p>
+    <a class="poc" style="display: none;">
+      Click here to finish registering on Eventbrite
+    </a>
+    <a class="gen" style="display: none;">
+      Click here to finish registering on Eventbrite
+    </a>
+  </p>
+</div>
 
-        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+<script>
+  jQuery(document).ready(function () {
+    function redirectToEventRegistration(eventPrefix) {
+      jQuery(".ebmcreg a.poc").attr("href", "https://" + eventPrefix + "-poc.eventbrite.com")
+      jQuery(".ebmcreg a.gen").attr("href", "https://" + eventPrefix + "-gen.eventbrite.com")
+      jQuery(".ebmcreg form").change(function () {
+        var poc = jQuery('.ebmcreg input[name=pocstatus]:radio:checked').val();
+        var firstName = jQuery(".ebmcreg input[name=firstname]").val();
+        var lastName = jQuery(".ebmcreg input[name=lastname]").val();
+        if (poc.length > 0 && firstName.length > 0 && lastName.length > 0) {
 
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/main.css">
-        <script src="js/vendor/modernizr-2.6.2.min.js"></script>
-        <style type='text/css'>
-            .ebmcreg {
-                margin-left: 40px;
-                margin-right: 40px;
-            }
-            .required {
-                color: red;
-            }
-        </style>
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
-        <![endif]-->
+          if (poc === "Yes") {
+            jQuery(".ebmcreg a.poc").show();
+            jQuery(".ebmcreg a.gen").hide();
+          } else {
+            jQuery(".ebmcreg a.poc").hide();
+            jQuery(".ebmcreg a.gen").show();
 
-        <!-- Add your site or application content here -->
-        <div class="ebmcreg">
-          <h1>EBMC Event Registration - Step One</h1>
-          <p>The EBMC Leadership Sangha has set a goal of balancing the demographics of the EBMC practice space and maximizing the percentage of People of Color (POC) in attendance at each of the daylongs, class series, and workshops for which EBMC requires advance registration (i.e.,  not for the weekly sitting groups), except events reserved for certain specific communities. We seek a minimum of 40% POC attendance at events open to all. </p>
+          }
+        }
+      })
+    };
 
-          <form>
-            <p>
-              <input type="text" name="firstname" class="textfield" placeholder="First Name" autofocus="&quot;autofocus&quot;"><span class="required">*</span>
-            </p>
-            <p>
-              <input type="text" name="lastname" class="textfield" placeholder="Last Name" ><span class="required">*</span>
-            </p>
-            <p>
-              <label>Do you identify as a Person of Color or as Multiracial?</label><span class="required">*</span><br>
-              <input type="radio" name="pocstatus" value="Yes">Yes<br>
-              <input type="radio" name="pocstatus" value="No">No
-            </p>
-          </form>
-
-          <p class='required'>
-            *Required.
-          </p>
-          <a class="poc" href="" style="display:none">Click here to finish registering on Eventbrite</a>
-          <a class="gen" href="" style="display:none">Click here to finish registering on Eventbrite</a>
-        </div>
-
-
-        <script src="js/vendor/jquery-1.9.1.min.js"></script>
-        <!--<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>-->
-        <script src="js/vendor/purl.js"></script>
-        <!--<script>window.jQuery || document.write('<script src="js/vendor/jquery-1.9.1.min.js"><\/script>')</script>-->
-        <script src="js/plugins.js"></script>
-        <script src="js/main.js"></script>
-
-        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
-        <script>
-//            var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
-            (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
-            g.src='//www.google-analytics.com/ga.js';
-            s.parentNode.insertBefore(g,s)}(document,'script'));
-
-            $(document).ready(function() {
-                var eventPrefix=$.url().param('event');
-                $("a.poc").attr("href","https://" + eventPrefix + "-poc.eventbrite.com")
-                $("a.gen").attr("href","https://" + eventPrefix + "-gen.eventbrite.com")
-                $("form").change(function(){
-                    var poc=$('input[name=pocstatus]:radio:checked').val();
-                    var firstName=$("input[name=firstname]").val();
-                    var lastName=$("input[name=lastname]").val();
-                    if (poc.length > 0 && firstName.length >0 && lastName.length >0){
-
-                        if (poc === "Yes"){
-                                  $("a.poc").show();
-                            $("a.gen").hide();
-                        }   else {
-                            $("a.poc").hide();
-                            $("a.gen").show();
-
-                        }
-
-
-                    }
-                })
-            })
-        </script>
-    </body>
-</html>
+    var onEbmcReg = window.location.pathname === "/ebmcreg/" && jQuery(".ebmcreg").length > 0;
+    if (!onEbmcReg) {
+      return;
+    }
+    try {
+      var eventPrefix = window.location.search.match(/event=(.*)/)[1];
+      redirectToEventRegistration(eventPrefix);
+    } catch (e) {
+      console.log("Trouble finding event prefix.");
+      console.log(e);
+    }
+  });
+</script>
